@@ -1,0 +1,49 @@
+.item {
+    background-color: steelblue;
+    height: 40px;
+    margin: 5px;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.item > span {
+    margin: 10px 15px;
+}
+
+.bell {
+    border: 2px solid gold;
+}
+
+.finished {
+    border: 2px solid black;
+}
+
+.info {
+    float: left;
+}
+
+.laps {
+    float: right;
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s;
+}
+
+.example-enter-active {
+    opacity: 1;
+}
+
+.example-leave {
+    opacity: 0.1;
+    height: 0;
+    transition:
+        height .5s,
+        opacity .5s;
+
+}
