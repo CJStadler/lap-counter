@@ -1,17 +1,20 @@
-.item {
+.athlete {
     background-color: steelblue;
     height: 40px;
     margin: 5px;
+	padding: 0 10px;
     font-size: 20px;
     line-height: 20px;
-    text-align: center;
     color: white;
     box-sizing: border-box;
     overflow: hidden;
+	display: flex;
+	flex-direction: row;
 }
 
-.item > span {
-    margin: 10px 15px;
+.athlete > div {
+    margin: 10px auto;
+	flex-basis: 150px;
 }
 
 .bell {
@@ -23,23 +26,28 @@
 }
 
 .info {
-    float: left;
+}
+
+.timer {
+	flex-shrink: 5;
+	text-align: center;
 }
 
 .laps {
-    float: right;
+	flex-shrink: 2;
+	text-align: right;
 }
 
-.example-enter {
+.queue-enter {
   opacity: 0.01;
   transition: opacity .5s;
 }
 
-.example-enter-active {
+.queue-enter-active {
     opacity: 1;
 }
 
-.example-leave {
+.queue-leave {
     opacity: 0.1;
     height: 0;
     transition:

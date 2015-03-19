@@ -1,7 +1,7 @@
 
 var Athlete = React.createClass({
     render: function() {
-        var classes = "item";
+        var classes = "athlete";
         if (this.props.athlete.laps == 1) {
             classes += " bell";
         } else if (this.props.athlete.laps < 1) {
@@ -9,8 +9,9 @@ var Athlete = React.createClass({
         }
         return (
             <div onClick={this.props.lapCompleted.bind(this, this.props.i)} className={classes} >
-                <span className="info">{this.props.athlete.hip_number}. {this.props.athlete.name}</span>
-                <span className="laps">To Go: {this.props.athlete.laps}</span>
+                <div className="info">{this.props.athlete.hip_number}. {this.props.athlete.name}</div>
+				<Timer start_time={this.props.start_time} />
+                <div className="laps">To Go: {this.props.athlete.laps}</div>
             </div>
         );
     }

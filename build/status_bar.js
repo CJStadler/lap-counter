@@ -6,7 +6,10 @@ var StatusBar = React.createClass({displayName: "StatusBar",
 	
 	render: function() {
 		return (
-			React.createElement("div", null, "I am the status bar.", React.createElement("span", null, this.props.laps_remaining))
+			React.createElement("div", null, "I am the status bar.", 
+				React.createElement(Timer, {start_time: this.props.start_time}), 
+				React.createElement("div", null, "Laps Remaining: ", this.props.laps_remaining)
+			)
 		);
 	}
 });
