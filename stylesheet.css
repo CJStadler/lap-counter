@@ -1,3 +1,30 @@
+body {
+	margin: 0;
+}
+
+/* Status Bar
+**************************/
+#status-bar {
+	background-color: gray;
+	color: white;
+	height: 50px;
+	padding: 0 15px;
+	font-size: 20px;
+	line-height: 20px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
+
+#status-bar > div {
+	margin: 15px auto;
+	flex-basis: 150px;
+}
+
+/* Atheletes
+**************************/
+
 .athlete {
     background-color: steelblue;
     height: 40px;

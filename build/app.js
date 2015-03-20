@@ -21,7 +21,8 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		return { 
 			total_laps: this.props.total_laps,
 			athletes: athletes,
-			start_time: start_time
+			start_time: start_time,
+			distance: "5000m"
 		};
     },
 	
@@ -46,7 +47,7 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 	render: function() {
 		return (
 			React.createElement("div", null, 
-				React.createElement(StatusBar, {start_time: this.state.start_time, laps_remaining: this.leaderLaps()}), 
+				React.createElement(StatusBar, {start_time: this.state.start_time, distance: this.state.distance, laps_remaining: this.leaderLaps()}), 
 				React.createElement(List, {total_laps: this.state.total_laps, athletes: this.state.athletes, lapCompleted: this.lapCompleted})
 			)
 		);

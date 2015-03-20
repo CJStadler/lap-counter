@@ -6,9 +6,10 @@ var StatusBar = React.createClass({
 	
 	render: function() {
 		return (
-			<div>I am the status bar.
+			<div id="status-bar">
+				<div className="info">{this.props.distance}</div>
 				<Timer start_time={this.props.start_time} />
-				<div>Laps Remaining: {this.props.laps_remaining}</div>
+				<div className="laps">Laps: {this.props.laps_remaining}</div>
 			</div>
 		);
 	}
