@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	font-family: sans-serif;
 }
 
 /* Status Bar
@@ -56,9 +57,20 @@ body {
 .info {
 }
 
-.timer {
+.timer,
+#start-button {
 	flex-shrink: 5;
 	text-align: center;
+}
+
+#status-bar > #start-button {
+	border: 1px solid white;
+	border-radius: 5px;
+	height: 30px;
+	margin: 10px auto;
+	box-sizing: border-box;
+	padding: 4px;
+	font-weight: bold;
 }
 
 .laps {

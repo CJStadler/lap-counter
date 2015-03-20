@@ -9,9 +9,12 @@ var Timer = React.createClass({displayName: "Timer",
 		return Math.floor(elapsed / 1000);
 	},
 	tick: function() {
-		this.setState({elapsed: this.getElapsed()});
+		if (this.props.started) {
+			this.setState({elapsed: this.getElapsed()});
+		}
 	},
 	componentDidMount: function() {
+		// rerender every 100ms
 		this.interval = setInterval(this.tick, 100);
 	},
 	componentWillUnmount: function() {

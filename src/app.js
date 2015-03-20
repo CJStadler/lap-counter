@@ -11,26 +11,40 @@ var test_data = [
 var LapCounter = React.createClass({
 	getInitialState: function() {
 		console.log("total laps: " +this.props.total_laps);
-		var start_time = new Date().getTime();
 		athletes = this.props.athletes.map(function(a) {
 			// One less because the first time they come by they will have finished a lap.
 			a.laps = this.props.total_laps - 1; 
-			a.start_time = start_time;
+			a.start_time = 0;
+			a.splits = [];
 			return a;
 		}.bind(this));
 		return { 
 			total_laps: this.props.total_laps,
 			athletes: athletes,
-			start_time: start_time,
+			start_time: 0,
+			started: false,
 			distance: "5000m"
 		};
     },
+	
+	startRace: function() {
+		var start_time = new Date().getTime();
+		this.setState({
+			started: true,
+			start_time: start_time,
+			athletes: this.state.athletes.map(function(a) {
+				a.start_time = start_time;
+				return a;
+			})
+		});
+	},
 	
 	// When an athlete is clicked subtract from their lap count and move them to the bottom of the queue.
 	lapCompleted: function(i) {
 		var athletes = this.state.athletes.slice();
 		var athlete = athletes.splice(i, 1)[0];
 		athlete.laps -= 1;
+		athlete.splits.push((new Date().getTime()) - athlete.start_time);
 		athlete.start_time = new Date().getTime();
 		athletes.push(athlete);
 		this.setState({athletes: athletes});
@@ -47,8 +61,19 @@ var LapCounter = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<StatusBar start_time={this.state.start_time} distance={this.state.distance} laps_remaining={this.leaderLaps()}/>
-				<List total_laps={this.state.total_laps} athletes={this.state.athletes} lapCompleted={this.lapCompleted}/>
+				<StatusBar
+					startRace={this.startRace}
+					started={this.state.started}
+					start_time={this.state.start_time}
+					distance={this.state.distance}
+					laps_remaining={this.leaderLaps()}
+				/>
+				<List
+					started={this.state.started}
+					total_laps={this.state.total_laps}
+					athletes={this.state.athletes}
+					lapCompleted={this.lapCompleted}
+				/>
 			</div>
 		);
 	}

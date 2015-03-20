@@ -10,7 +10,7 @@ var Athlete = React.createClass({
         return (
             <div onClick={this.props.lapCompleted.bind(this, this.props.i)} className={classes} >
                 <div className="info">{this.props.athlete.hip_number}. {this.props.athlete.name}</div>
-				<Timer start_time={this.props.start_time} />
+				<Timer started={this.props.started} start_time={this.props.start_time} />
                 <div className="laps">To Go: {this.props.athlete.laps}</div>
             </div>
         );
