@@ -17,9 +17,24 @@ var Timer = React.createClass({
 	componentWillUnmount: function() {
 		clearInterval(this.interval);
 	},
+	formatTime: function(seconds) {
+		var formatted;
+		// if less than a minute just show seconds, else show M:SS
+		var minutes = Math.floor(seconds/60);
+		if (minutes > 0) {
+			var seconds = seconds%60;
+			if (seconds < 10) {
+				seconds = "0" + seconds;
+			}
+			formatted = minutes + ":" + seconds;
+		} else {
+			formatted = seconds + "";
+		}
+		return formatted
+	},
 	render: function() {
 		return (
-			<div className="timer" >{this.state.elapsed}</div>
+			<div className="timer" >{this.formatTime(this.state.elapsed)}</div>
 		);
 	}
 });
