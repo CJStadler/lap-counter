@@ -46,6 +46,10 @@ body {
 	flex-basis: 150px;
 }
 
+.athlete.leader {
+	background-color: green;
+}
+
 .bell {
     border: 2px solid gold;
 }
@@ -78,6 +82,32 @@ body {
 	text-align: right;
 }
 
+/* Forms
+**************************************/
+form {
+	margin: 5px 10px;
+}
+
+h2 {
+	margin: 0 10px 5px;
+	font-size: 20px;
+}
+
+label {
+	margin: 0 5px 0 10px;
+}
+
+input {
+	margin: 0 10px 0 5px;
+	width: 100px;
+}
+
+input[type="number"] {
+	width: 50px;
+}
+
+/* Transitions
+**************************************/
 .queue-enter {
   opacity: 0.01;
   transition: opacity .5s;

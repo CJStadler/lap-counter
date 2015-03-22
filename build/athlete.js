@@ -7,6 +7,9 @@ var Athlete = React.createClass({displayName: "Athlete",
         } else if (this.props.athlete.laps < 1) {
             classes += " finished";
         }
+		if (this.props.leader) {
+			classes += " leader";
+		}
         return (
             React.createElement("div", {onClick: this.props.lapCompleted.bind(this, this.props.i), className: classes}, 
                 React.createElement("div", {className: "info"}, this.props.athlete.hip_number, ". ", this.props.athlete.name), 
