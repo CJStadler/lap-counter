@@ -35,15 +35,17 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 	
 	// When an athlete is clicked subtract from their lap count and move them to the bottom of the queue.
 	lapCompleted: function(i) {
-		var athletes = this.state.athletes.slice();
-		var athlete = athletes.splice(i, 1)[0];
-		athlete.laps -= 1;
-		athlete.splits.push((new Date().getTime()) - athlete.start_time);
-		athlete.start_time = new Date().getTime();
-		athletes.push(athlete);
-		this.setState({athletes: athletes});
+		if (this.state.started) {
+			var athletes = this.state.athletes.slice();
+			var athlete = athletes.splice(i, 1)[0];
+			athlete.laps -= 1;
+			athlete.splits.push((new Date().getTime()) - athlete.start_time);
+			athlete.start_time = new Date().getTime();
+			athletes.push(athlete);
+			this.setState({athletes: athletes});
 
-		console.log('Person ' + this.state.athletes[i].n +" will have "+this.state.athletes[i].laps+" laps.");
+			console.log('Person ' + this.state.athletes[i].n +" will have "+this.state.athletes[i].laps+" laps.");
+		}
 	},
 
 	getLeader: function() {
@@ -77,15 +79,21 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		this.setState({total_laps: laps});
 	},
 	
+	hipNotUnique: function(n) {
+		// false if unique
+		return this.state.athletes.some(function(a) {
+			return a.hip_number == n;
+		});
+	},
+	
 	createAthlete: function(hip, name) {
-		// NEED TO VALIDATE UNIQUENESS OF HIP NUMBER
+		var athletes = this.state.athletes.slice();
 		var athlete = {
 			hip_number: hip,
 			name: name,
 			splits: [],
 			laps: this.state.total_laps
 		};
-		var athletes = this.state.athletes.slice();
 		athletes.push(athlete);
 		this.setState({athletes: athletes});
 	},
@@ -93,9 +101,9 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 	render: function() {
 		var form;
 		if (this.state.total_laps === 0) { // not yet set
-			form = React.createElement(LapsForm, {setLaps: this.setLaps});
+			form = React.createElement(LapsForm, {setLaps: this.setLaps, error: this.state.error});
 		} else if (! this.state.started) {
-			form = React.createElement(AthleteForm, {createAthlete: this.createAthlete});
+			form = React.createElement(AthleteForm, {createAthlete: this.createAthlete, hipNotUnique: this.hipNotUnique});
 		}
 		
 		return (

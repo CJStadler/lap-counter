@@ -75,6 +75,7 @@ body {
 	box-sizing: border-box;
 	padding: 4px;
 	font-weight: bold;
+	background-color: rgb(211, 31, 58);
 }
 
 .laps {
@@ -93,7 +94,7 @@ h2 {
 	font-size: 20px;
 }
 
-label {
+label, .error {
 	margin: 0 5px 0 10px;
 }
 
@@ -104,6 +105,10 @@ input {
 
 input[type="number"] {
 	width: 50px;
+}
+
+.error {
+	color: red;
 }
 
 /* Transitions
