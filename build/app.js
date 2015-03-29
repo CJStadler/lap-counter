@@ -6,7 +6,9 @@ var test_data = [
     {hip_number: 3, name: "Loeb"},
     {hip_number: 4, name: "Meehan"},
     {hip_number: 5, name: "Riffenburgh"},
-]
+];
+
+var previous_states = [];
 
 var LapCounter = React.createClass({displayName: "LapCounter",
 	getInitialState: function() {
@@ -19,6 +21,22 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 			distance: "5000m"
 		};
     },
+	
+	componentWillMount: function() {
+		previous_states.push(this.state);
+	},
+	
+	componentWillUpdate: function(next_props, next_state) {
+		// store previous state somewhere
+		previous_states.push(JSON.parse(JSON.stringify(next_state)));
+	},
+	
+	restorePreviousState: function() {
+		var l = previous_states.length;
+		if (l > 0) {
+			this.setState(previous_states[l-2]);
+		}
+	},
 	
 	startRace: function() {
 		if (this.state.total_laps > 0 && this.state.athletes.length >0) {
@@ -126,7 +144,8 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 					started: this.state.started, 
 					start_time: this.state.start_time, 
 					distance: this.state.distance, 
-					laps_remaining: this.leaderLaps()}
+					laps_remaining: this.leaderLaps(), 
+					undo: this.restorePreviousState}
 				), 
 				form, 
 				React.createElement(List, {

@@ -12,7 +12,7 @@ var StatusBar = React.createClass({
 		}
 		return (
 			<div id="status-bar">
-				<div className="info">{this.props.distance}</div>
+				<div className="info" id="undo" onClick={this.props.undo} >Undo</div>
 				{timer}
 				<div className="laps">Laps: {this.props.laps_remaining}</div>
 			</div>
