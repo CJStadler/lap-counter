@@ -12,6 +12,11 @@ Race:
 1. Tap "Start" approximately when the race starts (could use mic to pick up gun eventually).
 2. Tap each competitor's name as they pass the start line each time.
 
-Ideas:
-Colors for leader or top 3?
-Colors for lapped?
+TO DO:
+Stop button. (or when all athletes done)
+What happens when an athlete finishes?
+DNF.
+Undo?
+Highlight lapped?
+Suggest if lap missed?
+Show splits.

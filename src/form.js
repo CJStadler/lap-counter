@@ -31,6 +31,10 @@ var AthleteForm = React.createClass({
 		return {error: ""}
 	},
 	
+	componentDidMount: function() {
+		this.refs.hip_number.getDOMNode().focus();
+	},
+	
 	handleSubmit: function(e) {
 		e.preventDefault();
 		
@@ -59,6 +63,7 @@ var AthleteForm = React.createClass({
 		
 		
 	},
+	
 	render: function() {
 		return (
 			<form onSubmit={this.handleSubmit}>

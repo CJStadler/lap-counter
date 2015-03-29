@@ -10,10 +10,10 @@ var test_data = [
 
 var LapCounter = React.createClass({displayName: "LapCounter",
 	getInitialState: function() {
-		var athletes = [];
 		return {
 			total_laps: 0,
-			athletes: athletes,
+			athletes: [],
+			finished: [],
 			start_time: 0,
 			started: false,
 			distance: "5000m"
@@ -21,16 +21,18 @@ var LapCounter = React.createClass({displayName: "LapCounter",
     },
 	
 	startRace: function() {
-		var start_time = new Date().getTime();
-		this.setState({
-			started: true,
-			start_time: start_time,
-			athletes: this.state.athletes.map(function(a) {
-				a.start_time = start_time;
-				a.laps -= 1;
-				return a;
-			})
-		});
+		if (this.state.total_laps > 0 && this.state.athletes.length >0) {
+			var start_time = new Date().getTime();
+			this.setState({
+				started: true,
+				start_time: start_time,
+				athletes: this.state.athletes.map(function(a) {
+					a.start_time = start_time;
+					a.laps -= 1;
+					return a;
+				})
+			});
+		}
 	},
 	
 	// When an athlete is clicked subtract from their lap count and move them to the bottom of the queue.
@@ -38,22 +40,28 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		if (this.state.started) {
 			var athletes = this.state.athletes.slice();
 			var athlete = athletes.splice(i, 1)[0];
+
 			athlete.laps -= 1;
 			athlete.splits.push((new Date().getTime()) - athlete.start_time);
 			athlete.start_time = new Date().getTime();
-			athletes.push(athlete);
-			this.setState({athletes: athletes});
-
-			console.log('Person ' + this.state.athletes[i].n +" will have "+this.state.athletes[i].laps+" laps.");
+			if (athlete.laps == -1) { // Finished
+				var finished = this.state.finished.slice();
+				finished.push(athlete);
+				this.setState({finished: finished, athletes: athletes});
+				console.log(athlete.name + " finished");
+			} else {
+				athletes.push(athlete);
+				this.setState({athletes: athletes});
+			}
 		}
 	},
 
 	getLeader: function() {
-		if (this.state.started) {
+		if (this.state.started && this.state.athletes.length > 0) {
 			var min = this.state.athletes[0].laps;
 			var min_id = 0; // index of athlete with lowest laps so far;
 			var n = this.state.athletes.length;
-			for (var i=1; i<n; i++) { // looping from left to right will guarentee that we get the FIRST person with the lowest laps.
+			for (var i=1; i<n; i++) { // looping from left to right will guarantee that we get the FIRST person with the lowest laps.
 				if (this.state.athletes[i].laps < min) {
 					min = this.state.athletes[i].laps;
 					min_id = i;
@@ -67,9 +75,14 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 	
 	leaderLaps: function() {
 		if (this.state.started) {
-			return this.state.athletes.reduce(function(min, athlete) {
-				return (athlete.laps < min ? athlete.laps : min);
-			}, this.state.total_laps);
+			if (this.state.athletes.length > 0) {
+				return this.state.athletes.reduce(function(min, athlete) {
+					return (athlete.laps < min ? athlete.laps : min);
+				}, this.state.total_laps);
+			} else {
+				// All finished
+				return "Finished";
+			}
 		} else {
 			return this.state.total_laps;
 		}

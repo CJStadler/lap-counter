@@ -23,7 +23,20 @@ body {
 	flex-basis: 150px;
 }
 
-/* Atheletes
+#status-bar > #start-button {
+	border: 1px solid white;
+	border-radius: 5px;
+	height: 30px;
+	margin: 10px auto;
+	box-sizing: border-box;
+	padding: 4px;
+	font-weight: bold;
+	background-color: rgb(211, 31, 58);
+	cursor: pointer;
+}
+
+
+/* Athletes
 **************************/
 
 .athlete {
@@ -65,17 +78,6 @@ body {
 #start-button {
 	flex-shrink: 5;
 	text-align: center;
-}
-
-#status-bar > #start-button {
-	border: 1px solid white;
-	border-radius: 5px;
-	height: 30px;
-	margin: 10px auto;
-	box-sizing: border-box;
-	padding: 4px;
-	font-weight: bold;
-	background-color: rgb(211, 31, 58);
 }
 
 .laps {
