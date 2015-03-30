@@ -11,6 +11,8 @@ var Timer = React.createClass({displayName: "Timer",
 	tick: function() {
 		if (this.props.started) {
 			this.setState({elapsed: this.getElapsed()});
+		} else if (this.state.elapsed != 0) {
+			this.setState({elapsed: 0});
 		}
 	},
 	componentDidMount: function() {

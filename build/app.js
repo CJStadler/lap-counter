@@ -34,7 +34,7 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 	restorePreviousState: function() {
 		var l = previous_states.length;
 		if (l > 0) {
-			this.setState(previous_states[l-2]);
+			this.setState(previous_states.splice(l-2, 2)[0]);
 		}
 	},
 	
