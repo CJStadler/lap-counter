@@ -1,3 +1,4 @@
+var Timer = require('./timer.js');
 
 var Athlete = React.createClass({displayName: "Athlete",
     render: function() {
@@ -19,3 +20,5 @@ var Athlete = React.createClass({displayName: "Athlete",
         );
     }
 });
+
+module.exports = Athlete;

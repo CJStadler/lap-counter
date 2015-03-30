@@ -1,4 +1,5 @@
-
+var Athlete = require('./athlete.js');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var List = React.createClass({displayName: "List",
  
@@ -23,3 +24,5 @@ var List = React.createClass({displayName: "List",
     );
   }
 });
+
+module.exports = List;

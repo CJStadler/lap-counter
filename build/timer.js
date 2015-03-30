@@ -43,3 +43,5 @@ var Timer = React.createClass({displayName: "Timer",
 		);
 	}
 });
+
+module.exports = Timer;

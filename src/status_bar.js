@@ -1,3 +1,4 @@
+var Timer = require('./timer.js');
 
 /*
  * Displays total distance, time, and leader's laps remaining at the top of the screen.
@@ -19,3 +20,5 @@ var StatusBar = React.createClass({
 		);
 	}
 });
+
+module.exports = StatusBar;

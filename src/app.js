@@ -1,5 +1,12 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+// imports
+var List = require('./list.js'),
+	StatusBar = require('./status_bar.js'),
+	forms = require('./form.js'),
+	AthleteForm = forms.athlete_form,
+	LapsForm = forms.laps_form;
 
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+	
 var test_data = [
     {hip_number: 1, name: "Cheadle"},
     {hip_number: 2, name: "Regan"},

@@ -78,3 +78,5 @@ var AthleteForm = React.createClass({displayName: "AthleteForm",
 		);
 	}
 });
+
+module.exports = {laps_form: LapsForm, athlete_form: AthleteForm};
