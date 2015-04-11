@@ -1,9 +1,11 @@
 // imports
-var List = require('./list.js'),
+var React = require('react/addons'),
+	List = require('./list.js'),
 	StatusBar = require('./status_bar.js'),
 	forms = require('./form.js'),
 	AthleteForm = forms.athlete_form,
-	LapsForm = forms.laps_form;
+	LapsForm = forms.laps_form,
+	Results = require('./results.js');
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 	
@@ -106,7 +108,7 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 				}, this.state.total_laps);
 			} else {
 				// All finished
-				return "Finished";
+				return -1;
 			}
 		} else {
 			return this.state.total_laps;
@@ -144,6 +146,11 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 			form = React.createElement(AthleteForm, {createAthlete: this.createAthlete, hipNotUnique: this.hipNotUnique});
 		}
 		
+		var results;
+		if (this.state.finished.length > 0) {
+			results = React.createElement(Results, {start_time: this.state.start_time, athletes: this.state.finished});
+		}
+		
 		return (
 			React.createElement("div", null, 
 				React.createElement(StatusBar, {
@@ -156,12 +163,14 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 				), 
 				form, 
 				React.createElement(List, {
+					finished: false, 
 					started: this.state.started, 
 					total_laps: this.state.total_laps, 
 					leader: this.getLeader(), 
 					athletes: this.state.athletes, 
 					lapCompleted: this.lapCompleted}
-				)
+				), 
+				results
 			)
 		);
 	}

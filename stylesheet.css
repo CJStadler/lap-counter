@@ -20,7 +20,6 @@ body {
 
 #status-bar > div {
 	margin: 15px auto;
-	flex-basis: 150px;
 }
 
 #status-bar > #start-button {
@@ -33,6 +32,23 @@ body {
 	font-weight: bold;
 	background-color: rgb(211, 31, 58);
 	cursor: pointer;
+	flex-basis: 33%;
+}
+
+#status-bar .timer {
+	margin-left: 17%;
+}
+
+#status-bar > #undo {
+	flex-basis: 20%;
+	margin-right: 13%;
+	border: 1px solid white;
+	border-radius: 3px;
+	padding: 3px;
+	box-sizing: border-box;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	text-align: center;
 }
 
 
@@ -41,11 +57,10 @@ body {
 
 .athlete {
     background-color: steelblue;
-    height: 40px;
+    height: 50px;
     margin: 5px;
 	padding: 0 10px;
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 16px;
     color: white;
     box-sizing: border-box;
     overflow: hidden;
@@ -55,8 +70,7 @@ body {
 }
 
 .athlete > div {
-    margin: 10px auto;
-	flex-basis: 150px;
+    margin: 15px auto;
 }
 
 .athlete.leader {
@@ -72,17 +86,18 @@ body {
 }
 
 .info {
+	flex-basis: 50%;
 }
 
 .timer,
 #start-button {
-	flex-shrink: 5;
 	text-align: center;
+	flex-basis: 20%;
 }
 
 .laps {
-	flex-shrink: 2;
 	text-align: right;
+	flex-basis: 30%;
 }
 
 /* Forms
@@ -111,6 +126,32 @@ input[type="number"] {
 
 .error {
 	color: red;
+}
+
+/* Results
+**************************************/
+
+#results {
+	margin: 15px 5px;
+}
+
+#results ol {
+	list-style: none;
+	padding-left: 10px;
+}
+
+#results .place {
+	width: 25px;
+	display: inline-block;
+}
+
+#results .name {
+	width: 150px;
+	display: inline-block;
+}
+
+#results .time {
+	display: inline-block;
 }
 
 /* Transitions

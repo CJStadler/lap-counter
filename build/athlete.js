@@ -1,4 +1,5 @@
-var Timer = require('./timer.js');
+var React = require('react'),
+	Timer = require('./timer.js').timer;
 
 var Athlete = React.createClass({displayName: "Athlete",
     render: function() {

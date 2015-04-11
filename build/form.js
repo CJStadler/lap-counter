@@ -1,3 +1,5 @@
+var React = require('react');
+
 var LapsForm = React.createClass({displayName: "LapsForm",
 	getInitialState: function() {
 		return {error: ""}

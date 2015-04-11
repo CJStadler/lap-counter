@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Timer = React.createClass({displayName: "Timer",
 	getInitialState: function() {
 		return {
@@ -6,7 +8,7 @@ var Timer = React.createClass({displayName: "Timer",
 	},
 	getElapsed: function() {
 		var elapsed = new Date().getTime() - this.props.start_time
-		return Math.floor(elapsed / 1000);
+		return elapsed;
 	},
 	tick: function() {
 		if (this.props.started) {
@@ -22,26 +24,28 @@ var Timer = React.createClass({displayName: "Timer",
 	componentWillUnmount: function() {
 		clearInterval(this.interval);
 	},
-	formatTime: function(seconds) {
-		var formatted;
-		// if less than a minute just show seconds, else show M:SS
-		var minutes = Math.floor(seconds/60);
-		if (minutes > 0) {
-			var seconds = seconds%60;
-			if (seconds < 10) {
-				seconds = "0" + seconds;
-			}
-			formatted = minutes + ":" + seconds;
-		} else {
-			formatted = seconds + "";
-		}
-		return formatted
-	},
 	render: function() {
 		return (
-			React.createElement("div", {className: "timer"}, this.formatTime(this.state.elapsed))
+			React.createElement("div", {className: "timer"}, formatTime(this.state.elapsed))
 		);
 	}
 });
 
-module.exports = Timer;
+var formatTime = function(milliseconds) {
+	var formatted;
+	var seconds = milliseconds / 1000;
+	var minutes = Math.floor(seconds/60);
+	seconds = Math.floor(seconds%60);
+	// if less than a minute just show seconds, else show M:SS
+	if (minutes > 0) {
+		if (seconds < 10) {
+			seconds = "0" + seconds;
+		}
+		formatted = minutes + ":" + seconds;
+	} else {
+		formatted = seconds + "";
+	}
+	return formatted
+}
+
+module.exports = {timer: Timer, formatTime: formatTime};

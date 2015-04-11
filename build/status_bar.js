@@ -1,4 +1,5 @@
-var Timer = require('./timer.js');
+var React = require('react'),
+	Timer = require('./timer.js').timer;
 
 /*
  * Displays total distance, time, and leader's laps remaining at the top of the screen.
@@ -11,11 +12,12 @@ var StatusBar = React.createClass({displayName: "StatusBar",
 		} else { // show start button
 			timer = React.createElement("div", {id: "start-button", onClick: this.props.startRace}, "START")
 		}
+
 		return (
 			React.createElement("div", {id: "status-bar"}, 
 				React.createElement("div", {className: "info", id: "undo", onClick: this.props.undo}, "Undo"), 
 				timer, 
-				React.createElement("div", {className: "laps"}, "Laps: ", this.props.laps_remaining)
+				React.createElement("div", {className: "laps"}, this.props.laps_remaining < 0 ? "Finished" : "Laps "+this.props.laps_remaining)
 			)
 		);
 	}

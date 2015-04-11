@@ -1,4 +1,5 @@
-var Athlete = require('./athlete.js');
+var React = require('react/addons'),
+	Athlete = require('./athlete.js');
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var List = React.createClass({
@@ -18,8 +19,8 @@ var List = React.createClass({
 				leader = true;
 			}	
 				
-            return <Athlete started={this.props.started} athlete={athlete} leader={leader} key={athlete.hip_number+" "+laps} start_time={athlete.start_time} lapCompleted={this.props.lapCompleted} i={i}/>;
-        }.bind(this))
+			return <Athlete started={this.props.started} athlete={athlete} leader={leader} key={athlete.hip_number+" "+laps} start_time={athlete.start_time} lapCompleted={this.props.lapCompleted} i={i}/>;
+		}.bind(this))
       }</ReactCSSTransitionGroup>
     );
   }

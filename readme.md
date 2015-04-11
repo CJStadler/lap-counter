@@ -12,6 +12,9 @@ Race:
 1. Tap "Start" approximately when the race starts (could use mic to pick up gun eventually).
 2. Tap each competitor's name as they pass the start line each time.
 
+BUGS:
+Last athlete is not removed (sometimes? after undo?)
+
 TO DO:
 Stop button. (or when all athletes done)
 What happens when an athlete finishes?
