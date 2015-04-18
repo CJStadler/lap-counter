@@ -13,7 +13,8 @@ Race:
 2. Tap each competitor's name as they pass the start line each time.
 
 BUGS:
-Last athlete is not removed (sometimes? after undo?)
+Last athlete is not removed (sometimes? after undo?). Transition group issue?
+Correct athlete does not finish.
 
 TO DO:
 Stop button. (or when all athletes done)

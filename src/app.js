@@ -6,6 +6,8 @@ var React = require('react/addons'),
 	AthleteForm = forms.athlete_form,
 	LapsForm = forms.laps_form,
 	Results = require('./results.js');
+	
+var PureRenderMixin = React.addons.PureRenderMixin;
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 	
@@ -20,6 +22,8 @@ var test_data = [
 var previous_states = [];
 
 var LapCounter = React.createClass({
+	mixins: [PureRenderMixin],
+	
 	getInitialState: function() {
 		return {
 			total_laps: 0,
@@ -176,6 +180,10 @@ var LapCounter = React.createClass({
 	}
 });
 
+/*
 React.render(
   <LapCounter />, document.getElementById('app')
 );
+*/
+
+module.exports = LapCounter;

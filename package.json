@@ -1,0 +1,32 @@
+{
+  "name": "lap-counter",
+  "version": "1.0.0",
+  "description": "Make counting laps in track races easier",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.12.3",
+    "jade": "^1.9.2",
+    "react": "^0.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CJStadler/lap-counter.git"
+  },
+  "keywords": [
+    "track",
+    "field",
+    "laps",
+    "counting",
+    "react"
+  ],
+  "author": "Chris Stadler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CJStadler/lap-counter/issues"
+  },
+  "homepage": "https://github.com/CJStadler/lap-counter"
+}
