@@ -13,6 +13,7 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
 	res.render('index', {app: React.renderToString(LapCounter({}))});
+	console.log('GET /');
 });
 
 // catch 404 and forward to error handler

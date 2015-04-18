@@ -180,10 +180,4 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 	}
 });
 
-/*
-React.render(
-  <LapCounter />, document.getElementById('app')
-);
-*/
-
 module.exports = LapCounter;
