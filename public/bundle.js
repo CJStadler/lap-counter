@@ -132,7 +132,7 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		if (this.state.started) {
 			var athletes = this.state.athletes.slice();
 			var athlete = athletes.splice(i, 1)[0];
-			console.log(athlete.name+ " completed a lap");
+
 			athlete.laps -= 1;
 			athlete.splits.push((new Date().getTime()) - athlete.start_time);
 			athlete.start_time = new Date().getTime();
@@ -249,14 +249,22 @@ var React = require('react'),
 var Athlete = React.createClass({displayName: "Athlete",
     render: function() {
         var classes = "athlete";
+		
+		// Check if approaching bell or in last lap
         if (this.props.athlete.laps == 1) {
             classes += " bell";
         } else if (this.props.athlete.laps < 1) {
-            classes += " finished";
+            classes += " finishing";
         }
-		if (this.props.leader) {
+		
+		// Check if lapped or is leader
+		var diff = this.props.athlete.laps - this.props.leader.laps;
+		if (diff > 1 || (diff > 0 && this.props.athlete.start_time > this.props.leader.start_time)) {
+			classes += " lapped";
+		} else if (this.props.leader && this.props.leader.hip_number == this.props.athlete.hip_number) {
 			classes += " leader";
 		}
+		
         return (
             React.createElement("div", {onClick: this.props.lapCompleted.bind(null, this.props.i), className: classes}, 
                 React.createElement("div", {className: "info"}, this.props.athlete.hip_number, ". ", this.props.athlete.name), 
@@ -380,13 +388,15 @@ var List = React.createClass({displayName: "List",
 			if (! this.props.started) {
 				laps -= 1;
 			}
-			// check if leader
-			var leader = false;
-			if (this.props.leader && this.props.leader.hip_number == athlete.hip_number) {
-				leader = true;
-			}	
 				
-			return React.createElement(Athlete, {started: this.props.started, athlete: athlete, leader: leader, key: athlete.hip_number+" "+laps, start_time: athlete.start_time, lapCompleted: this.props.lapCompleted, i: i});
+			return React.createElement(Athlete, {
+					started: this.props.started, 
+					athlete: athlete, 
+					leader: this.props.leader, 
+					key: athlete.hip_number+" "+laps, 
+					start_time: athlete.start_time, 
+					lapCompleted: this.props.lapCompleted, 
+					i: i});
 		}.bind(this))
 		// returning an empty transition group seems to cause issues.
 		if (this.props.athletes.length > 0) {

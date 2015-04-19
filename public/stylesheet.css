@@ -77,12 +77,16 @@ body {
 	background-color: green;
 }
 
-.bell {
+.athlete.bell {
     border: 2px solid gold;
 }
 
-.finished {
+.athlete.finishing {
     border: 2px solid black;
+}
+
+.athlete.lapped {
+	background-color: red;
 }
 
 .info {

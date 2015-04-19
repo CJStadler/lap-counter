@@ -13,13 +13,15 @@ var List = React.createClass({
 			if (! this.props.started) {
 				laps -= 1;
 			}
-			// check if leader
-			var leader = false;
-			if (this.props.leader && this.props.leader.hip_number == athlete.hip_number) {
-				leader = true;
-			}	
 				
-			return <Athlete started={this.props.started} athlete={athlete} leader={leader} key={athlete.hip_number+" "+laps} start_time={athlete.start_time} lapCompleted={this.props.lapCompleted} i={i}/>;
+			return <Athlete
+					started={this.props.started}
+					athlete={athlete}
+					leader={this.props.leader}
+					key={athlete.hip_number+" "+laps}
+					start_time={athlete.start_time}
+					lapCompleted={this.props.lapCompleted}
+					i={i}/>;
 		}.bind(this))
 		// returning an empty transition group seems to cause issues.
 		if (this.props.athletes.length > 0) {
