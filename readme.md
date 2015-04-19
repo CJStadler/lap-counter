@@ -3,6 +3,8 @@ Lap Counter
 
 An application for lap counting during races (specifically aimed at track races).
 
+Currently hosted at lapcounter.cjstadler.com
+
 Pre-race: 
 1. Select the race distance and number of laps.
 2. Input a list of the competitors names, hip numbers, and seed times.
@@ -13,8 +15,6 @@ Race:
 2. Tap each competitor's name as they pass the start line each time.
 
 BUGS:
-Last athlete is not removed (sometimes? after undo?). Transition group issue?
-Correct athlete does not finish.
 
 TO DO:
 Stop button. (or when all athletes done)
@@ -24,3 +24,5 @@ Undo?
 Highlight lapped?
 Suggest if lap missed?
 Show splits.
+
+Inspired by the 2015 DIII track & field women's 5k indoor national championship.

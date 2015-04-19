@@ -71,7 +71,7 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		if (this.state.started) {
 			var athletes = this.state.athletes.slice();
 			var athlete = athletes.splice(i, 1)[0];
-
+			console.log(athlete.name+ " completed a lap");
 			athlete.laps -= 1;
 			athlete.splits.push((new Date().getTime()) - athlete.start_time);
 			athlete.start_time = new Date().getTime();

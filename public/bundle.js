@@ -132,7 +132,7 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		if (this.state.started) {
 			var athletes = this.state.athletes.slice();
 			var athlete = athletes.splice(i, 1)[0];
-
+			console.log(athlete.name+ " completed a lap");
 			athlete.laps -= 1;
 			athlete.splits.push((new Date().getTime()) - athlete.start_time);
 			athlete.start_time = new Date().getTime();
@@ -258,7 +258,7 @@ var Athlete = React.createClass({displayName: "Athlete",
 			classes += " leader";
 		}
         return (
-            React.createElement("div", {onClick: this.props.lapCompleted.bind(null, this, this.props.i), className: classes}, 
+            React.createElement("div", {onClick: this.props.lapCompleted.bind(null, this.props.i), className: classes}, 
                 React.createElement("div", {className: "info"}, this.props.athlete.hip_number, ". ", this.props.athlete.name), 
 				React.createElement(Timer, {started: this.props.started, start_time: this.props.start_time}), 
                 React.createElement("div", {className: "laps"}, "To Go: ", this.props.athlete.laps)
