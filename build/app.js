@@ -35,6 +35,10 @@ var LapCounter = React.createClass({displayName: "LapCounter",
 		};
     },
 	
+	componentWillReceiveProps: function(new_props) {
+		this.setState(new_props);
+	},
+	
 	componentWillMount: function() {
 		previous_states.push(this.state);
 	},

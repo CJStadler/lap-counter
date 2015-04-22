@@ -2,6 +2,7 @@ var express = require('express');
 var React = require('react');
 var path = require('path');
 var LapCounter = React.createFactory(require('./build/app.js'));
+var Tutorial = React.createFactory(require('./build/tutorial.js'));
 var app = express();
 
 // view engine setup
@@ -11,9 +12,20 @@ app.set('view engine', 'jade');
 // Allow access to files in 'public' directory
 app.use(express.static('public'));
 
+// ROUTES
 app.get('/', function (req, res) {
-	res.render('index', {app: React.renderToString(LapCounter({}))});
+	res.render('index');
 	console.log('GET /');
+});
+
+app.get('/app', function (req, res) {
+	res.render('app', {app: React.renderToString(LapCounter({}))});
+	console.log('GET /app');
+});
+
+app.get('/tutorial', function (req, res) {
+	res.render('app', {app: React.renderToString(Tutorial({}))});
+	console.log('GET /tutorial');
 });
 
 // catch 404 and forward to error handler
