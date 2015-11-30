@@ -38,7 +38,17 @@ var Tutorial = React.createClass({
 			},
 			{name:"athlete",
 				jsx: <div id="athlete">Tap an athlete each time they complete a lap. This will move them to the bottom of the queue.</div>,
-				props: {}
+				props: {
+					start_time: new Date().getTime(),
+					started: true,
+					athletes: [
+						{"hip_number":"13","name":"Lucy Cheadle","splits":[],"laps":24},
+						{"hip_number":"14","name":"Sophia Meehan","splits":[],"laps":24},
+						{"hip_number":"11","name":"Amy Regan","splits":[],"laps":24},
+						{"hip_number":"17","name":"Frances Loeb","splits":[],"laps":24},
+						{"hip_number":"12","name":"Kelley Riffenburgh","splits":[],"laps":24}
+					]
+				}
 			},
 			{name:"athlete_time",
 				jsx: <div id="athlete_time">The athletes current lap split is shown here.</div>,
@@ -70,10 +80,11 @@ var Tutorial = React.createClass({
 	},
 	
 	render: function() {
+		var step = this.getCurrentStep();
 		return (<div>
 			<LapCounter {...this.getCurrentStep().props} />
-			<div id="tutorial">
-				{this.getCurrentStep().jsx}
+			<div id="tutorial" className={"tutorial-"+step.name}>
+				{step.jsx}
 				<div onClick={this.nextStep} id="next-button">Next</div>
 			</div>
 		</div>);

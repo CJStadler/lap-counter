@@ -6,11 +6,11 @@ var React = require('react/addons'),
 	AthleteForm = forms.athlete_form,
 	LapsForm = forms.laps_form,
 	Results = require('./results.js');
-	
+
 var PureRenderMixin = React.addons.PureRenderMixin;
 
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-	
+
 var test_data = [
     {hip_number: 1, name: "Cheadle"},
     {hip_number: 2, name: "Regan"},
@@ -23,7 +23,7 @@ var previous_states = [];
 
 var LapCounter = React.createClass({
 	mixins: [PureRenderMixin],
-	
+
 	getInitialState: function() {
 		return {
 			total_laps: 0,
@@ -34,27 +34,27 @@ var LapCounter = React.createClass({
 			distance: "5000m"
 		};
     },
-	
+
 	componentWillReceiveProps: function(new_props) {
 		this.setState(new_props);
 	},
-	
+
 	componentWillMount: function() {
 		previous_states.push(this.state);
 	},
-	
+
 	componentWillUpdate: function(next_props, next_state) {
 		// store previous state somewhere
 		previous_states.push(JSON.parse(JSON.stringify(next_state)));
 	},
-	
+
 	restorePreviousState: function() {
 		var l = previous_states.length;
 		if (l > 0) {
 			this.setState(previous_states.splice(l-2, 2)[0]);
 		}
 	},
-	
+
 	startRace: function() {
 		if (this.state.total_laps > 0 && this.state.athletes.length >0) {
 			var start_time = new Date().getTime();
@@ -69,7 +69,7 @@ var LapCounter = React.createClass({
 			});
 		}
 	},
-	
+
 	// When an athlete is clicked subtract from their lap count and move them to the bottom of the queue.
 	lapCompleted: function(i) {
 		if (this.state.started) {
@@ -107,7 +107,7 @@ var LapCounter = React.createClass({
 			return false;
 		}
 	},
-	
+
 	leaderLaps: function() {
 		if (this.state.started) {
 			if (this.state.athletes.length > 0) {
@@ -122,18 +122,18 @@ var LapCounter = React.createClass({
 			return this.state.total_laps;
 		}
 	},
-	
+
 	setLaps : function(laps) {
 		this.setState({total_laps: laps});
 	},
-	
+
 	hipNotUnique: function(n) {
 		// false if unique
 		return this.state.athletes.some(function(a) {
 			return a.hip_number == n;
 		});
 	},
-	
+
 	createAthlete: function(hip, name) {
 		var athletes = this.state.athletes.slice();
 		var athlete = {
@@ -145,7 +145,7 @@ var LapCounter = React.createClass({
 		athletes.push(athlete);
 		this.setState({athletes: athletes});
 	},
-	
+
 	render: function() {
 		var form;
 		if (this.state.total_laps === 0) { // not yet set
@@ -153,12 +153,12 @@ var LapCounter = React.createClass({
 		} else if (! this.state.started) {
 			form = <AthleteForm createAthlete={this.createAthlete} hipNotUnique={this.hipNotUnique} />;
 		}
-		
+
 		var results;
 		if (this.state.finished.length > 0) {
 			results = <Results start_time={this.state.start_time} athletes={this.state.finished} />;
 		}
-		
+
 		return (
 			<div>
 				<StatusBar
