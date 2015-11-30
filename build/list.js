@@ -5,7 +5,7 @@ var React = require('react/addons'),
 
 var List = React.createClass({displayName: "List",
 	mixins: [PureRenderMixin],
-	
+
 	render: function() {
 		var athletes = this.props.athletes.map(function(athlete, i) {
 			// before starting the key should be one less, so that everything doesn't enter and exit on starting.
@@ -13,7 +13,7 @@ var List = React.createClass({displayName: "List",
 			if (! this.props.started) {
 				laps -= 1;
 			}
-				
+
 			return React.createElement(Athlete, {
 					started: this.props.started, 
 					athlete: athlete, 

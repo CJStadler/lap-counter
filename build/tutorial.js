@@ -38,7 +38,17 @@ var Tutorial = React.createClass({displayName: "Tutorial",
 			},
 			{name:"athlete",
 				jsx: React.createElement("div", {id: "athlete"}, "Tap an athlete each time they complete a lap. This will move them to the bottom of the queue."),
-				props: {}
+				props: {
+					start_time: new Date().getTime(),
+					started: true,
+					athletes: [
+						{"hip_number":"13","name":"Lucy Cheadle","splits":[],"laps":24},
+						{"hip_number":"14","name":"Sophia Meehan","splits":[],"laps":24},
+						{"hip_number":"11","name":"Amy Regan","splits":[],"laps":24},
+						{"hip_number":"17","name":"Frances Loeb","splits":[],"laps":24},
+						{"hip_number":"12","name":"Kelley Riffenburgh","splits":[],"laps":24}
+					]
+				}
 			},
 			{name:"athlete_time",
 				jsx: React.createElement("div", {id: "athlete_time"}, "The athletes current lap split is shown here."),
@@ -70,10 +80,11 @@ var Tutorial = React.createClass({displayName: "Tutorial",
 	},
 	
 	render: function() {
+		var step = this.getCurrentStep();
 		return (React.createElement("div", null, 
 			React.createElement(LapCounter, React.__spread({},  this.getCurrentStep().props)), 
-			React.createElement("div", {id: "tutorial"}, 
-				this.getCurrentStep().jsx, 
+			React.createElement("div", {id: "tutorial", className: "tutorial-"+step.name}, 
+				step.jsx, 
 				React.createElement("div", {onClick: this.nextStep, id: "next-button"}, "Next")
 			)
 		));

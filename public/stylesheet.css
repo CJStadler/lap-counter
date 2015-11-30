@@ -181,3 +181,24 @@ input[type="number"] {
         opacity .5s;
 
 }
+
+/* Tutorial
+**************************************/
+#tutorial {
+	position: absolute;
+	z-index: 10;
+	width: 200px;
+	max-width: 100%;
+	background-color: rgba(128, 128, 128, 0.7);
+	border: 1px solid black;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+#next-button {
+	background-color: steelblue;
+	border: 1px solid white;
+	border-radius: 3px;
+	padding: 3px;
+	float: right;
+}
