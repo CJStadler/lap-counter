@@ -15,9 +15,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "hello": "echo 'Hello World'",
-    "build": "jsx src/ build/ -x jsx && browserify build/app.js -o public/bundle.js -v",
+    "build": "jsx src/ build/ -x jsx && browserify build/app.js build/client.js -o public/bundle.js -v",
     "watch:jsx": "jsx -w src/ build/ -x jsx",
-    "watch:bundle": "watchify build/app.js -o public/bundle.js -v"
+    "watch:bundle": "watchify build/app.js build/client.js -o public/bundle.js -v"
   },
   "repository": {
     "type": "git",
