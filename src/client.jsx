@@ -1,4 +1,3 @@
-// This picks up the server rendered app
 var React = require('react'),
 	LapCounter = require('./app.jsx'),
 	Tutorial = require('./tutorial.jsx');

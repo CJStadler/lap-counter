@@ -22,8 +22,16 @@ Inspired by the 2015 DIII track & field women's 5k indoor national championship.
 
 ## Setup
 
+Code is kept in `src/` and is bundled into `dist/bundle.js`.
+
+For development:
 ```
-npx webpack
+make
+```
+
+For production:
+```
+make optimized
 ```
 
 Open `dist/index.html`.
