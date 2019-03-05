@@ -2,22 +2,17 @@
   "name": "lap-counter",
   "version": "1.0.0",
   "description": "Make counting laps in track races easier",
-  "main": "server.js",
   "dependencies": {
-    "express": "^4.12.3",
-    "jade": "^1.9.2",
-    "react": "^0.13.1",
-    "browserify": "latest"
+    "react": "^0.13.1"
   },
   "devDependencies": {
-    "watchify": "latest"
+    "jsx-loader": "^0.13.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "hello": "echo 'Hello World'",
-    "build": "jsx src/ build/ -x jsx && browserify build/app.js build/client.js -o public/bundle.js -v",
-    "watch:jsx": "jsx -w src/ build/ -x jsx",
-    "watch:bundle": "watchify build/app.js build/client.js -o public/bundle.js -v"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

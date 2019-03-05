@@ -1,5 +1,5 @@
 var React = require('react/addons'),
-	Athlete = require('./athlete.js'),
+	Athlete = require('./athlete.jsx'),
 	ReactCSSTransitionGroup = React.addons.CSSTransitionGroup,
 	PureRenderMixin = React.addons.PureRenderMixin;
 

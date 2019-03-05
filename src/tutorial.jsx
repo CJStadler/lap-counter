@@ -1,5 +1,5 @@
 var React = require('react/addons'),
-	LapCounter = require('./app.js'),
+	LapCounter = require('./app.jsx'),
 	PureRenderMixin = React.addons.PureRenderMixin;
 
 var Tutorial = React.createClass({

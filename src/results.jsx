@@ -1,5 +1,5 @@
 var React = require('react'),
-	formatTime = require('./timer.js').formatTime;
+	formatTime = require('./timer.jsx').formatTime;
 	
 var Results = React.createClass({
 	render: function() {

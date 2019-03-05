@@ -1,5 +1,5 @@
 var React = require('react'),
-	Timer = require('./timer.js').timer;
+	Timer = require('./timer.jsx').timer;
 
 /*
  * Displays total distance, time, and leader's laps remaining at the top of the screen.

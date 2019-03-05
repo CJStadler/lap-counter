@@ -1,11 +1,11 @@
 // imports
 var React = require('react/addons'),
-	List = require('./list.js'),
-	StatusBar = require('./status_bar.js'),
-	forms = require('./form.js'),
+	List = require('./list.jsx'),
+	StatusBar = require('./status_bar.jsx'),
+	forms = require('./form.jsx'),
 	AthleteForm = forms.athlete_form,
 	LapsForm = forms.laps_form,
-	Results = require('./results.js');
+	Results = require('./results.jsx');
 
 var PureRenderMixin = React.addons.PureRenderMixin;
 
